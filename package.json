@@ -1,0 +1,35 @@
+{
+  "name": "lodash-exercises",
+  "version": "1.0.0",
+  "description": "Recreating the Lodash library as an exercise in functional programming and JavaScript",
+  "main": "src/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Katherine Manning",
+  "license": "MIT",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 98,
+        "branches": 91,
+        "functions": 98,
+        "lines": 98
+      }
+    },
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "testRegex": "tests/.*\\.test\\.js$"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^23.3.0"
+  }
+}
