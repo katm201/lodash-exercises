@@ -73,7 +73,6 @@ describe('map', () => {
     const callback = (v) => v;
 
     const actual = _.map(object, callback);
-    console.log(actual)
     expect(actual.indexOf(1)).toBeGreaterThan(-1);
     expect(actual.indexOf(2)).toBeGreaterThan(-1);
     expect(actual.indexOf(3)).toBeGreaterThan(-1);
@@ -104,4 +103,11 @@ describe('map', () => {
     expect(actual[1]).toEqual(object);
     expect(actual[2]).toEqual(object);
   });
+
+  it('is implemented using each', () => {
+    const object = { a: 1, b: 2, c: 3 };
+    const spy = jest.spyOn(_, 'each');
+    const actual = _.map(object);
+    expect(spy).toHaveBeenCalled();
+  })
 });
