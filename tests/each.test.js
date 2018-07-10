@@ -12,6 +12,15 @@ describe('each', () => {
     }
   });
 
+  it('runs, but does nothing, without a callback passed explicitly to it', () => {
+    const array = [0, 1, 2, 3, 4, 5, 6];
+
+    _.each(array);
+    for (let i = 0; i < array.length; i++) {
+      expect(array[i]).toBeDefined;
+    }
+  });
+
   it('performs the callback on each item in an array as the first parameter', () => {
     const array = [0, 1, 2, 3, 4, 5, 6];
     const values = [];
@@ -82,5 +91,5 @@ describe('each', () => {
     expect(array[0]).toEqual(object);
     expect(array[1]).toEqual(object);
     expect(array[2]).toEqual(object);
-  })
+  });
 });
