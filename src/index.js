@@ -18,5 +18,13 @@ module.exports = function() {
     }
   }
 
+  _.map = (collection, callback = _.identity) => {
+    const array = [];
+    _.each(collection, (v, i, c) => {
+      array.push(callback(v, i, c));
+    });
+    return array;
+  }
+
   return _;
 }();
