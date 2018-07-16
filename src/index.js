@@ -26,5 +26,17 @@ module.exports = function() {
     return array;
   }
 
+  _.reduce = (collection, callback = _.identity, initialValue) => {
+    let accum = initialValue;
+    _.each(collection, (v, i, c) => {
+      if (accum === undefined) {
+        accum = v;
+      } else {
+        accum = callback(accum, v, i, c);
+      }
+    });
+    return accum;
+  }
+
   return _;
 }();
