@@ -6,4 +6,4 @@ This repo recreates the popular Lodash library as an exercise in test-driven-dev
 
 This repo isn't currently set up as a teaching aid, but if you'd like to play around with it, you'll need `node` and the `npm` and `jest` CLIs installed on your computer.
 
-To get started, run either `npm install` or `yarn install` to install the node modules indicated in the `package.json`. Once that's complete, you can run tests on the exercises with either `jest` or `npm test` in the terminal. To see a test coverage report run `jest --coverage`.
+To get started, run either `npm install` or `yarn install` to install the node modules indicated in the `package.json`. Once that's complete, you can run tests on the exercises with either `jest` or `npm test` in the terminal. To see a test coverage report, run `jest --coverage`.

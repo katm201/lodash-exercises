@@ -3,7 +3,7 @@ const _ = require('../src/index');
 describe('map', () => {
   it('returns an array', () => {
     const array = [0, 1];
-    const callback = (v) => v + 1;
+    const callback = v => v + 1;
 
     const actual = _.map(array, callback);
     expect(Array.isArray(actual)).toEqual(true);
@@ -30,7 +30,7 @@ describe('map', () => {
     const array = [0, 1, 2, 3, 4, 5, 6];
 
     const values = _.map(array);
-    for (let i = 0; i < array.length - 1; i++) {
+    for (let i = 0; i < array.length - 1; i += 1) {
       expect(values[i]).toBeLessThan(values[i + 1]);
     }
   });
@@ -38,10 +38,10 @@ describe('map', () => {
   it('performs the callback on each item in an array as the first parameter', () => {
     const array = [0, 1, 2, 3, 4, 5, 6];
     const expected = [0, 2, 4, 6, 8, 10, 12];
-    const callback = (v) => v * 2;
+    const callback = v => v * 2;
 
     const actual = _.map(array, callback);
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i += 1) {
       expect(actual[i]).toEqual(expected[i]);
     }
   });
@@ -69,7 +69,7 @@ describe('map', () => {
 
   it('performs the callback on each value in an object as the first parameter', () => {
     const object = { a: 1, b: 2, c: 3 };
-    const callback = (v) => v;
+    const callback = v => v;
 
     const actual = _.map(object, callback);
     expect(actual.indexOf(1)).toBeGreaterThan(-1);
@@ -106,7 +106,7 @@ describe('map', () => {
   it('is implemented using each', () => {
     const object = { a: 1, b: 2, c: 3 };
     const spy = jest.spyOn(_, 'each');
-    const actual = _.map(object);
+    _.map(object);
     expect(spy).toHaveBeenCalled();
   });
 });

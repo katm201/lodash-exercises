@@ -82,10 +82,10 @@ describe('reduce', () => {
   it('performs the callback on the whole collection at each key/value pair in the object as the fourth parameter', () => {
     const object = { a: 1, b: 2, c: 3 };
     const callback = (a, v, k, c) => {
-      a[v] = c
-      return a;
+      const accum = { ...a };
+      accum[v] = c;
+      return accum;
     };
-    const expected = { 1: { a: 1, b: 2, c: 3 }, 2: { a: 1, b: 2, c: 3 }, 3: { a: 1, b: 2, c: 3 } };
 
     const actual = _.reduce(object, callback, {});
     expect(actual[1]).toEqual(object);
@@ -97,7 +97,7 @@ describe('reduce', () => {
     const object = { a: 1, b: 2, c: 3 };
     const spy = jest.spyOn(_, 'each');
     const callback = (a, v) => a + v;
-    const actual = _.map(object, callback, 0);
+    _.reduce(object, callback, 0);
     expect(spy).toHaveBeenCalled();
   });
 });
