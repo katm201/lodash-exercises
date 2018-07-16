@@ -1,22 +1,19 @@
-module.exports = function() {
+module.exports = (() => {
   const _ = {};
 
   // utility function used for other functions
-  _.identity = (value) => value;
+  _.identity = value => value;
 
   _.each = (collection, callback = _.identity) => {
-    // preserve order in arrays
-    if (Array.isArray(collection)) {
-      for (let i = 0; i < collection.length; i++) {
-        const value = collection[i];
-        callback(value, i, collection);
-      }
-    } else {
-      for (const key in collection) {
-        callback(collection[key], key, collection);
-      }
+    const isObject = !Array.isArray(collection);
+    const toIterate = isObject ? Object.keys(collection) : collection;
+
+    for (let i = 0; i < toIterate.length; i += 1) {
+      const key = isObject ? toIterate[i] : i;
+      const value = collection[key];
+      callback(value, key, collection);
     }
-  }
+  };
 
   _.map = (collection, callback = _.identity) => {
     const array = [];
@@ -24,7 +21,7 @@ module.exports = function() {
       array.push(callback(v, i, c));
     });
     return array;
-  }
+  };
 
   _.reduce = (collection, callback = _.identity, initialValue) => {
     let accum = initialValue;
@@ -36,7 +33,7 @@ module.exports = function() {
       }
     });
     return accum;
-  }
+  };
 
   return _;
-}();
+})();

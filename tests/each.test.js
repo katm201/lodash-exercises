@@ -4,10 +4,10 @@ describe('each', () => {
   it('iterates through an array in a specific order', () => {
     const array = [0, 1, 2, 3, 4, 5, 6];
     const values = [];
-    const callback = (v) => values.push(v);
+    const callback = v => values.push(v);
 
     _.each(array, callback);
-    for (let i = 0; i < array.length - 1; i++) {
+    for (let i = 0; i < array.length - 1; i += 1) {
       expect(values[i]).toBeLessThan(values[i + 1]);
     }
   });
@@ -16,8 +16,8 @@ describe('each', () => {
     const array = [0, 1, 2, 3, 4, 5, 6];
 
     _.each(array);
-    for (let i = 0; i < array.length; i++) {
-      expect(array[i]).toBeDefined;
+    for (let i = 0; i < array.length; i += 1) {
+      expect(array[i]).toBeDefined();
     }
   });
 
@@ -25,10 +25,10 @@ describe('each', () => {
     const array = [0, 1, 2, 3, 4, 5, 6];
     const values = [];
     const expected = [0, 2, 4, 6, 8, 10, 12];
-    const callback = (v) => values.push(v * 2);
+    const callback = v => values.push(v * 2);
 
     _.each(array, callback);
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i += 1) {
       expect(values[i]).toEqual(expected[i]);
     }
   });
@@ -45,7 +45,7 @@ describe('each', () => {
     expect(expected.a).toEqual(object.a);
     expect(expected.b).toEqual(object.b);
     expect(expected.c).toEqual(object.c);
-  })
+  });
 
   it('performs the callback on the whole collection at each indexin the array as the third parameter', () => {
     const array = ['a', 'b', 'c'];
@@ -63,7 +63,7 @@ describe('each', () => {
   it('performs the callback on each value in an object as the first parameter', () => {
     const object = { a: 1, b: 2, c: 3 };
     const values = [];
-    const callback = (v) => values.push(v);
+    const callback = v => values.push(v);
 
     _.each(object, callback);
     expect(values.indexOf(1)).toBeGreaterThan(-1);
