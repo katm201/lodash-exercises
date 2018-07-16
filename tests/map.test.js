@@ -9,7 +9,6 @@ describe('map', () => {
     expect(Array.isArray(actual)).toEqual(true);
   });
 
-
   it('returns itself when passed an array and no callback is provided', () => {
     const array = [0, 1, 2, 3, 4, 5, 6];
 
@@ -58,7 +57,7 @@ describe('map', () => {
     expect(expected[2]).toEqual(actual[2]);
   });
 
-  it('performs the callback on the whole collection at each indexin the array as the third parameter', () => {
+  it('performs the callback on the whole collection at each index in the array as the third parameter', () => {
     const array = ['a', 'b', 'c'];
     const callback = (v, i, c) => c;
 
@@ -94,7 +93,7 @@ describe('map', () => {
     expect(actual.indexOf('c')).toBeGreaterThan(-1);
   });
 
-  it('performs the callback on the whole collection at each indexin the array as the third parameter', () => {
+  it('performs the callback on the whole collection at each key/value pair in the object as the third parameter', () => {
     const object = { a: 1, b: 2, c: 3 };
     const callback = (v, i, c) => c;
 
@@ -109,5 +108,5 @@ describe('map', () => {
     const spy = jest.spyOn(_, 'each');
     const actual = _.map(object);
     expect(spy).toHaveBeenCalled();
-  })
+  });
 });
