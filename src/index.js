@@ -35,5 +35,9 @@ module.exports = (() => {
     return accum;
   };
 
+  _.filter = (collection, callback = _.identity) => {
+    return collection;
+  };
+
   return _;
 })();
