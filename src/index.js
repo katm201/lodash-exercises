@@ -45,5 +45,9 @@ module.exports = (() => {
     return results;
   };
 
+  _.every = (collection, callback = _.identity) => {
+    return collection;
+  };
+
   return _;
 })();
