@@ -36,7 +36,13 @@ module.exports = (() => {
   };
 
   _.filter = (collection, callback = _.identity) => {
-    return collection;
+    const results = _.reduce(collection, (a, v, i, c) => {
+      if (callback(v, i, c)) {
+        a.push(v);
+      }
+      return a;
+    }, []);
+    return results;
   };
 
   return _;
