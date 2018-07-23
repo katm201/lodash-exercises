@@ -45,5 +45,16 @@ module.exports = (() => {
     return results;
   };
 
+  _.every = (collection, callback = _.identity) => {
+    const result = _.reduce(collection, (a, v, i, c) => {
+      let accum = a;
+      if (accum) {
+        accum = !!callback(v, i, c);
+      }
+      return accum;
+    }, true);
+    return result;
+  };
+
   return _;
 })();
