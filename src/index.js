@@ -35,5 +35,15 @@ module.exports = (() => {
     return accum;
   };
 
+  _.filter = (collection, callback = _.identity) => {
+    const results = _.reduce(collection, (a, v, i, c) => {
+      if (callback(v, i, c)) {
+        a.push(v);
+      }
+      return a;
+    }, []);
+    return results;
+  };
+
   return _;
 })();
