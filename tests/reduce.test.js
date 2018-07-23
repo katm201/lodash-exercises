@@ -22,18 +22,18 @@ describe('reduce', () => {
   it('iterates through an array in a specific order', () => {
     const array = [0, 1, 2, 3, 4, 5, 6];
     const values = [];
-    const value = _.reduce(array, (a, v, i) => {
+    _.reduce(array, (a, v, i) => {
       values.push(i);
       return a + v;
     }, 0);
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i += 1) {
       expect(values[i]).toEqual(array[i]);
     }
   });
 
   it('performs the callback on the accumulator as the first parameter', () => {
     const array = [1, 1, 1, 1, 1, 1, 1];
-    const callback = (a) => a * 2;
+    const callback = a => a * 2;
 
     const value = _.reduce(array, callback, 2);
     expect(value).toEqual(256);
